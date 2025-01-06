@@ -14,6 +14,10 @@ class Game {
         window.addEventListener('resize', e => {
             this.resize(e.currentTarget.innerWidth, e.currentTarget.innerHeight);
         });
+
+        this.canvas.addEventListener('mousedown', e => {
+            this.player.flap();
+        });
     }
 
     resize(width, height) {

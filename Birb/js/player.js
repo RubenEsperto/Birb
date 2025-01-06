@@ -8,6 +8,7 @@ class Player{
         this.width;
         this.height;
         this.speedY;
+        this.flapSpeed
     }
 
     draw(){
@@ -30,9 +31,20 @@ class Player{
         this.height = this.spriteHeight * this.game.ratio; 
         this.y = this.game.height * 0.5 - this.height * 0.5;
         this.speedY = -6 * this.game.ratio;
+        this.flapSpeed = 6 * this.game.ratio;
     }
 
     isTouchingBottom() {
         return this.y >= this.game.height - this.height;
+    }
+
+    isTouchingTop() {
+        return this.y <= 0;
+    }
+
+    flap() {
+        if (!this.isTouchingTop()) {
+            this.speedY = -this.flapSpeed;
+        }
     }
 }
